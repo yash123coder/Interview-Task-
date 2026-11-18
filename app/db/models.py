@@ -81,10 +81,17 @@ class LeadAnalysis(Base):
         nullable=False
     )
 
-    classification = Column(String(20), nullable=True)
+    classification = Column(String(20), nullable=False)
 
-    confidence = Column(Float, nullable=True)
+    confidence = Column(Float, nullable=False)
 
+    reasoning = Column(Text, nullable=True)
+
+    recommended_action = Column(Text, nullable=True)
+
+    missing_information = Column(JSON, nullable=True)
+
+    # Retained for compatibility with existing application code.
     extracted_requirements = Column(JSON, nullable=True)
 
     recommended_response = Column(Text, nullable=True)

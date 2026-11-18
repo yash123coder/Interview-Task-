@@ -2,7 +2,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
-
+from app.api.routes.internal import router as internal_router
 from app.core.config import settings
 from app.db.database import Base, engine
 
@@ -34,6 +34,7 @@ app = FastAPI(
 
 app.include_router(health_router)
 app.include_router(leads_router, prefix="/api")
+app.include_router(internal_router)
 
 
 @app.get("/")
